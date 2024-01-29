@@ -70,13 +70,13 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 echo "Installing bootloader"
 
-pacstrap /mnt grub efibootmgr --noconfirm --needed
+pacstrap /mnt grub --noconfirm --needed
 
 # Bootloader configuration
 
 echo "Configuring bootloader"
 
-arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/mnt/boot --bootloader-id=GRUB
+arch-chroot /mnt grub-install --target=i386-pc /dev/sda
 
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 
