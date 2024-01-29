@@ -43,9 +43,9 @@ echo "Mounting the filesystems"
 
 mkdir /mnt
 
-mount -t ext4 "${ROOT}" /mnt
+mount "${ROOT}" /mnt
 mkdir /mnt/boot
-mount -t vfat "${EFI}" /mnt/boot/
+mount "${EFI}" /mnt/boot/
 
 # Install Arch Linux base on the system
 
@@ -76,7 +76,7 @@ pacstrap /mnt grub --noconfirm --needed
 
 echo "Configuring bootloader"
 
-arch-chroot /mnt grub-install --target=i386-pc /dev/sda
+arch-chroot /mnt grub-install --target=i386-pc --efi-directory=esp --boot-directory=/mnt/boot --bootloader-id=GRUB
 
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 
