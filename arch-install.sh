@@ -220,12 +220,10 @@ echo "------------------------"
 pacman -S qbittorrent --noconfirm --needed
 
 echo "----------------------------------------------"
-echo "Installation complete, rebooting in 15 seconds"
+echo "Installation complete, you can reboot now"
 echo "----------------------------------------------"
 
-sleep 5
-
-reboot
+exit
 
 REALEND
 
