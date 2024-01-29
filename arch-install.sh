@@ -165,7 +165,7 @@ echo "------------------------"
 echo "Installing KDE Plasma"
 echo "------------------------"
 
-pacman -S plasma sddm kde-applications --noconfirm --needed
+pacman -S plasma sddm --noconfirm --needed
 systemctl enable sddm
 
 
