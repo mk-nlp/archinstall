@@ -41,6 +41,8 @@ mkfs.ext4 -L "ROOT" "$ROOT"
 
 echo "Mounting the filesystems"
 
+mkdir /mnt
+
 mount -t ext4 "$ROOT" /mnt
 
 mkdir /mnt/boot
