@@ -32,10 +32,10 @@ read PASSWORD
 
 echo  "Making the filesystems"
 
-mkfs.fat -F32 -n "EFISYSTEM" "$EFI"
-mkswap -L "SWAP" "$SWAP"
-swapon "$SWAP"
-mkfs.ext4 -L "ROOT" "$ROOT"
+mkfs.vfat -F32 -n "EFISYSTEM" "${EFI}"
+mkswap "${SWAP}"
+swapon "${SWAP}"
+mkfs.ext4 -L "ROOT" "${ROOT}"
 
 # Mount the filesystems
 
@@ -43,11 +43,9 @@ echo "Mounting the filesystems"
 
 mkdir /mnt
 
-mount -t ext4 "$ROOT" /mnt
-
+mount -t ext4 "${ROOT}" /mnt
 mkdir /mnt/boot
-
-mount -t vfat "$EFI" /mnt/boot
+mount -t vfat "${EFI}" /mnt/boot/
 
 # Install Arch Linux base on the system
 
