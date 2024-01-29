@@ -175,7 +175,7 @@ echo "------------------------"
 echo "Enabling multilib repository"
 echo "------------------------"
 
-sed -i 's/#\[multilib\]/\[multilib\]/g' /etc/pacman.conf
+sed -i '/#\[multilib\]/,/#Include = \/etc\/pacman.d\/mirrorlist/ s/#//' /etc/pacman.conf
 
 pacman -Syu --noconfirm --needed
 
