@@ -70,20 +70,15 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 echo "Installing bootloader"
 
-bootctl install --path /mnt/boot
+pacstrap /mnt grub efibootmgr --noconfirm --needed
 
 # Bootloader configuration
 
 echo "Configuring bootloader"
 
-cat <<EOF > /mnt/boot/loader/loader.conf
-title Arch Linux
-linux /vmlinuz-linux
-initrd /initramfs-linux.img
-options root=${ROOT} rw
-EOF
+arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 
-
+arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 
 
 # Chroot installation script
