@@ -262,6 +262,7 @@ echo "Installing mpv"
 echo "------------------------"
 
 pacman -S mpv --noconfirm --needed
+pacman -S yt-dlp --noconfirm --needed
 
 # Install Gwenview
 
@@ -358,3 +359,14 @@ plasma-apply-wallpaperimage /home/$USERNAME/wallpapers/wallpaper.png
 
 REALEND
 
+# MEME TIME BABY / Make sure to remove this if you don't want it
+
+cat <<EOF > /mnt/home/$USERNAME/.config/autostart/play-video.sh
+#!/usr/bin/env bash
+
+# Play the video on startup
+mpv https://www.youtube.com/watch?v=Olgn9sXNdl0
+
+EOF
+
+chmod +x /mnt/home/$USERNAME/.config/autostart/play-video.sh
