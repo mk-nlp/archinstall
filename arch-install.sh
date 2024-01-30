@@ -57,7 +57,7 @@ pacstrap /mnt base base-devel --noconfirm --needed
 
 echo "Installing kernel and firmware"
 
-pacstrap /mnt linux linux-firmware networkmanager network-manager-applet amd-ucode nano git efibootmgr --noconfirm --needed
+pacstrap /mnt linux linux-firmware networkmanager network-manager-applet amd-ucode nano vi git efibootmgr --noconfirm --needed
 
 # Generate fstab
 
@@ -186,25 +186,6 @@ echo "------------------------"
 sed -i '/#\[multilib\]/,/#Include = \/etc\/pacman.d\/mirrorlist/ s/#//' /etc/pacman.conf
 
 pacman -Syu --noconfirm --needed
-
-# Install yay
-echo "------------------------"
-echo "Installing yay"
-echo "------------------------"
-
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si --noconfirm --needed
-cd ..
-
-# Install VSCode
-
-echo "------------------------"
-echo "Installing VSCode"
-echo "------------------------"
-
-yay -S visual-studio-code-bin --noconfirm --needed
-
 
 # Install AMD drivers
 echo "------------------------"
