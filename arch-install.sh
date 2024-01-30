@@ -57,7 +57,7 @@ pacstrap /mnt base base-devel --noconfirm --needed
 
 echo "Installing kernel and firmware"
 
-pacstrap /mnt linux linux-firmware networkmanager network-manager-applet amd-ucode nano git --noconfirm --needed
+pacstrap /mnt linux linux-firmware networkmanager network-manager-applet amd-ucode nano git efibootmgr --noconfirm --needed
 
 # Generate fstab
 
@@ -224,4 +224,9 @@ REALEND
 
 chmod +x /mnt/afterinstall.sh
 
-sh afterinstall.sh
+# Chroot into the system
+
+echo "Chrooting into the system"
+
+arch-chroot /mnt sh afterinstall.sh
+
