@@ -251,6 +251,10 @@ echo "----------------------------------------------"
 echo "Installation complete, you can reboot now"
 echo "----------------------------------------------"
 
+exit
+
+REALEND
+
 # Add README to desktop
 
 cat <<EOF > /home/$USERNAME/Desktop/README.txt
@@ -267,16 +271,28 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 This will install oh-my-zsh, you will be asked if you want to set zsh as default.
 Pick yes, and then exit the terminal and open a new one. You will see the zsh.
 
+# Yay installation
+
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si --noconfirm --needed
+cd ..
+rm -rf yay
+
+# Install Microsoft fonts
+
+yay -S ttf-ms-fonts --noconfirm --needed
+
+# Install VSCode
+
+yay -S visual-studio-code-bin --noconfirm --needed
+
+
 :) I don't know if I missed anything, but I hope you enjoy your new Arch Linux installation.
 
 Have a nice day!
 
 EOF
-
-
-exit
-
-REALEND
 
 chmod +x /mnt/afterinstall.sh
 
