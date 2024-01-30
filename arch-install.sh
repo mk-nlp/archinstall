@@ -247,6 +247,14 @@ echo "------------------------"
 
 pacman -S neofetch --noconfirm --needed
 
+# Install Dolphin
+
+echo "------------------------"
+echo "Installing Dolphin"
+echo "------------------------"
+
+pacman -S dolphin --noconfirm --needed
+
 echo "----------------------------------------------"
 echo "Installation complete, you can reboot now"
 echo "----------------------------------------------"
@@ -255,9 +263,19 @@ exit
 
 REALEND
 
+
+
+chmod +x /mnt/afterinstall.sh
+
+# Chroot into the system
+
+echo "Chrooting into the system"
+
+arch-chroot /mnt sh afterinstall.sh
+
 # Add README to desktop
 
-cat <<EOF > /home/$USERNAME/Desktop/README.txt
+cat <<REALEND > /home/$USERNAME/Desktop/README.txt
 The installation is finished, and this is most likely your first
 boot. Remember to change your keyboard layout to TRQ, and to
 change your timezone to Europe/Istanbul. You can do this by
@@ -292,13 +310,4 @@ yay -S visual-studio-code-bin --noconfirm --needed
 
 Have a nice day!
 
-EOF
-
-chmod +x /mnt/afterinstall.sh
-
-# Chroot into the system
-
-echo "Chrooting into the system"
-
-arch-chroot /mnt sh afterinstall.sh
-
+REALEND
