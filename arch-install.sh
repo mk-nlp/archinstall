@@ -80,6 +80,14 @@ arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootlo
 
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 
+# Set root password
+
+echo "Setting root password"
+
+arch-chroot /mnt passwd <<EOF
+$PASSWORD
+$PASSWORD
+EOF
 
 # Chroot installation script
 
@@ -87,7 +95,7 @@ cat <<REALEND > /mnt/afterinstall.sh
 
 #!/usr/bin/env bash
 useradd -m $USERNAME
-usermod -aG wheel,storage,power,audio $USERNAME
+usermod -aG wheel,storage,power,audio,sudo $USERNAME
 echo $USERNAME:$PASSWORD | chpasswd
 sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g' /etc/sudoers
 
@@ -225,6 +233,30 @@ echo "Installing QbitTorrent"
 echo "------------------------"
 
 pacman -S qbittorrent --noconfirm --needed
+
+# Install kitty
+
+echo "------------------------"
+echo "Installing kitty"
+echo "------------------------"
+
+pacman -S kitty --noconfirm --needed
+
+# Install Firefox
+
+echo "------------------------"
+echo "Installing Firefox"
+echo "------------------------"
+
+pacman -S firefox --noconfirm --needed
+
+# Install Neofetch
+
+echo "------------------------"
+echo "Installing Neofetch"
+echo "------------------------"
+
+pacman -S neofetch --noconfirm --needed
 
 echo "----------------------------------------------"
 echo "Installation complete, you can reboot now"
