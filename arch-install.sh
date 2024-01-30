@@ -76,7 +76,7 @@ pacstrap /mnt grub --noconfirm --needed
 
 echo "Configuring bootloader"
 
-arch-chroot /mnt grub-install --target=i386-pc --efi-directory=esp --boot-directory=/mnt/boot --bootloader-id=GRUB
+arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 
@@ -224,9 +224,4 @@ REALEND
 
 chmod +x /mnt/afterinstall.sh
 
-# Chroot into the system
-
-echo "Chrooting into the system"
-
-arch-chroot /mnt sh afterinstall.sh
-
+sh afterinstall.sh
