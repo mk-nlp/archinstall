@@ -344,3 +344,17 @@ yay -S visual-studio-code-bin --noconfirm --needed
 Have a nice day!
 
 REALEND
+
+# Change wallpaper to Arch Linux logo
+
+cat <<REALEND > /home/$USERNAME/Desktop/wallpaper.sh
+#!/usr/bin/env bash
+
+mkdir /home/$USERNAME/wallpapers
+
+curl https://i.imgur.com/1vqvWmv.png -o /home/$USERNAME/wallpapers/wallpaper.png
+
+plasma-apply-wallpaperimage /home/$USERNAME/wallpapers/wallpaper.png
+
+REALEND
+
