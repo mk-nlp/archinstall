@@ -255,6 +255,39 @@ echo "------------------------"
 
 pacman -S dolphin --noconfirm --needed
 
+# Install mpv
+
+echo "------------------------"
+echo "Installing mpv"
+echo "------------------------"
+
+pacman -S mpv --noconfirm --needed
+
+# Install Gwenview
+
+echo "------------------------"
+echo "Installing Gwenview"
+echo "------------------------"
+
+pacman -S gwenview --noconfirm --needed
+
+# Install zathura
+
+echo "------------------------"
+echo "Installing zathura"
+echo "------------------------"
+
+pacman -S zathura --noconfirm --needed
+pacman -S zathura-pdf-mupdf --noconfirm --needed
+
+# Install NodeJS
+
+echo "------------------------"
+echo "Installing NodeJS and NPM"
+echo "------------------------"
+
+pacman -S nodejs npm --noconfirm --needed
+
 echo "----------------------------------------------"
 echo "Installation complete, you can reboot now"
 echo "----------------------------------------------"
