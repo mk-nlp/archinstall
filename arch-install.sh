@@ -179,6 +179,25 @@ sed -i '/#\[multilib\]/,/#Include = \/etc\/pacman.d\/mirrorlist/ s/#//' /etc/pac
 
 pacman -Syu --noconfirm --needed
 
+# Install yay
+echo "------------------------"
+echo "Installing yay"
+echo "------------------------"
+
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si --noconfirm --needed
+cd ..
+
+# Install VSCode
+
+echo "------------------------"
+echo "Installing VSCode"
+echo "------------------------"
+
+yay -S visual-studio-code-bin --noconfirm --needed
+
+
 # Install AMD drivers
 echo "------------------------"
 echo "Installing AMD drivers"
@@ -199,13 +218,6 @@ echo "Installing Spotify"
 echo "------------------------"
 
 pacman -S spotify-launcher --noconfirm --needed
-
-# Install VSCode
-echo "------------------------"
-echo "Installing VSCode"
-echo "------------------------"
-
-pacman -S visual-studio-code-bin --noconfirm --needed
 
 # Install QbitTorrent
 echo "------------------------"
