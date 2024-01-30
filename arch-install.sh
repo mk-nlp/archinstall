@@ -57,7 +57,7 @@ pacstrap /mnt base base-devel --noconfirm --needed
 
 echo "Installing kernel and firmware"
 
-pacstrap /mnt linux linux-firmware networkmanager network-manager-applet amd-ucode nano vi git efibootmgr --noconfirm --needed
+pacstrap /mnt linux linux-firmware networkmanager network-manager-applet amd-ucode nano vi zsh git efibootmgr --noconfirm --needed
 
 # Generate fstab
 
@@ -98,6 +98,14 @@ useradd -m $USERNAME
 usermod -aG wheel,storage,power,audio,sudo $USERNAME
 echo $USERNAME:$PASSWORD | chpasswd
 sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g' /etc/sudoers
+
+# Add user to sudoers
+
+echo "------------------------"
+echo "Adding user to sudoers"
+echo "------------------------"
+
+echo "$USERNAME ALL=(ALL) ALL" >> /etc/sudoers
 
 # Set the time zone
 echo "------------------------"
@@ -242,6 +250,29 @@ pacman -S neofetch --noconfirm --needed
 echo "----------------------------------------------"
 echo "Installation complete, you can reboot now"
 echo "----------------------------------------------"
+
+# Add README to desktop
+
+cat <<EOF > /home/$USERNAME/Desktop/README.txt
+The installation is finished, and this is most likely your first
+boot. Remember to change your keyboard layout to TRQ, and to
+change your timezone to Europe/Istanbul. You can do this by
+going to keyboard settings and time settings in the system.
+
+Also zhs is installed, but not set as default.
+To set zhs as default and to install oh-my-zsh, run the following commands:
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+This will install oh-my-zsh, you will be asked if you want to set zsh as default.
+Pick yes, and then exit the terminal and open a new one. You will see the zsh.
+
+:) I don't know if I missed anything, but I hope you enjoy your new Arch Linux installation.
+
+Have a nice day!
+
+EOF
+
 
 exit
 
