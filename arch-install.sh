@@ -308,7 +308,7 @@ arch-chroot /mnt sh afterinstall.sh
 
 # Add README to desktop
 
-cat <<REALEND > /home/$USERNAME/Desktop/README.txt
+cat <<REALEND > /mnt/home/$USERNAME/Desktop/README.txt
 The installation is finished, and this is most likely your first
 boot. Remember to change your keyboard layout to TRQ, and to
 change your timezone to Europe/Istanbul. You can do this by
@@ -347,7 +347,7 @@ REALEND
 
 # Change wallpaper to Arch Linux logo
 
-cat <<REALEND > /home/$USERNAME/Desktop/wallpaper.sh
+cat <<REALEND > /mnt/home/$USERNAME/Desktop/wallpaper.sh
 #!/usr/bin/env bash
 
 mkdir /home/$USERNAME/wallpapers
